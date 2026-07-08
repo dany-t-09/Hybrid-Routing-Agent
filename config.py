@@ -16,7 +16,9 @@ def _load_dotenv() -> None:
 
 
 _load_dotenv()
-
+#  LOCAL MODEL 
+LOCAL_MODEL_NAME = os.getenv("LOCAL_MODEL_NAME", "qwen2.5:3b-instruct-q4_K_M")
+OLLAMA_API_URL = os.getenv("OLLAMA_API_URL", "http://localhost:11434/api/generate")
 
 FIREWORKS_API_KEY = os.getenv("FIREWORKS_API_KEY", "")
 FIREWORKS_DEFAULT_MODEL = os.getenv(

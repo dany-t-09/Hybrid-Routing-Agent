@@ -1,4 +1,5 @@
 from fireworks_client import ask_fireworks
+from local_model_client import ask_local_model
 from local.math_solver import solve_math
 from local.ner_solver import solve_ner
 from local.sentiment_solver import solve_sentiment
@@ -14,25 +15,26 @@ LOCAL_SOLVERS = {
 
 
 COMPLEX_CUES = {
-    "analyze",
-    "compare",
-    "debug",
-    "design",
-    "explain",
-    "generate",
-    "implement",
-    "reason",
-    "rewrite",
-    "write",
+    "build a full",
+    "large project",
+    "production",
+    "architecture",
+    "multi-file",
+    "research",
+    "deep analysis",
+    "advanced reasoning",
+    "optimize",
+    "complex",
 }
 
 
 def should_use_fireworks(query: str, task_type: str) -> bool:
-    if task_type in {"factual", "logic", "debugging", "codegen"}:
+    lowered = query.lower()
+
+    if task_type in {"debugging", "codegen", "logic"} and len(query.split()) > 80:
         return True
 
-    lowered = query.lower()
-    if len(query.split()) > 40:
+    if len(query.split()) > 150:
         return True
 
     return any(cue in lowered for cue in COMPLEX_CUES)
@@ -46,4 +48,4 @@ def solve(query: str, task_type: str) -> str:
     if local_solver:
         return local_solver(query)
 
-    return ask_fireworks(query, task_type)
+    return ask_local_model(query, task_type)
