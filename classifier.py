@@ -1,7 +1,13 @@
+import re
+
+
+MATH_EXPRESSION = re.compile(r"\d+(?:\.\d+)?\s*(?:[+*/^]|-(?=\s*\d))\s*\d")
+
+
 def classify_task(text: str) -> str:
     lowered = text.lower()
 
-    if any(token in lowered for token in ["calculate", "solve", "+", "-", "*", "/", "="]):
+    if lowered.startswith(("calculate ", "evaluate ")) or MATH_EXPRESSION.search(text):
         return "math"
     if any(token in lowered for token in ["sentiment", "positive", "negative", "neutral"]):
         return "sentiment"

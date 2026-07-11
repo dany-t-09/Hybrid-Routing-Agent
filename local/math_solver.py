@@ -23,9 +23,20 @@ def _eval(node):
 
 
 def solve_math(text: str) -> str:
-    expression = text.replace("calculate", "").replace("solve", "").strip()
+    expression = " ".join(text.replace("calculate", "").replace("solve", "").split())
     try:
         tree = ast.parse(expression, mode="eval")
         return str(_eval(tree.body))
     except Exception as exc:
         return f"Could not solve math expression: {exc}"
+
+
+def can_solve_math(text: str) -> bool:
+    """Return whether this is a safe, exact arithmetic expression for the local solver."""
+    expression = " ".join(text.replace("calculate", "").replace("solve", "").split())
+    try:
+        tree = ast.parse(expression, mode="eval")
+        _eval(tree.body)
+        return True
+    except Exception:
+        return False

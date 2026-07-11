@@ -21,23 +21,23 @@ LOCAL_MODEL_NAME = os.getenv("LOCAL_MODEL_NAME", "qwen2.5:3b-instruct-q4_K_M")
 OLLAMA_API_URL = os.getenv("OLLAMA_API_URL", "http://localhost:11434/api/generate")
 
 FIREWORKS_API_KEY = os.getenv("FIREWORKS_API_KEY", "")
-FIREWORKS_DEFAULT_MODEL = os.getenv(
-    "FIREWORKS_DEFAULT_MODEL",
-    os.getenv("FIREWORKS_MODEL", "accounts/fireworks/models/llama-v3p1-8b-instruct"),
-)
-FIREWORKS_MODELS = {
-    "factual": os.getenv("FIREWORKS_FACTUAL_MODEL", FIREWORKS_DEFAULT_MODEL),
-    "logic": os.getenv("FIREWORKS_LOGIC_MODEL", FIREWORKS_DEFAULT_MODEL),
-    "debugging": os.getenv("FIREWORKS_DEBUGGING_MODEL", FIREWORKS_DEFAULT_MODEL),
-    "codegen": os.getenv("FIREWORKS_CODEGEN_MODEL", FIREWORKS_DEFAULT_MODEL),
-    "summary": os.getenv("FIREWORKS_SUMMARY_MODEL", FIREWORKS_DEFAULT_MODEL),
-    "sentiment": os.getenv("FIREWORKS_SENTIMENT_MODEL", FIREWORKS_DEFAULT_MODEL),
-    "ner": os.getenv("FIREWORKS_NER_MODEL", FIREWORKS_DEFAULT_MODEL),
-    "math": os.getenv("FIREWORKS_MATH_MODEL", FIREWORKS_DEFAULT_MODEL),
-}
-FIREWORKS_API_URL = os.getenv(
-    "FIREWORKS_API_URL",
-    "https://api.fireworks.ai/inference/v1/chat/completions",
+FIREWORKS_BASE_URL = os.getenv("FIREWORKS_BASE_URL", "https://api.fireworks.ai/inference/v1").rstrip("/")
+ALLOWED_MODELS = tuple(model.strip() for model in os.getenv("ALLOWED_MODELS", "").split(",") if model.strip())
+
+
+def get_fireworks_model(task_type: str) -> str | None:
+    """Return only a model permitted by the evaluation harness."""
+    if not ALLOWED_MODELS:
+        return None
+
+    requested_model = os.getenv(f"FIREWORKS_{task_type.upper()}_MODEL", "")
+    return requested_model if requested_model in ALLOWED_MODELS else ALLOWED_MODELS[0]
+
+
+FIREWORKS_API_URL = (
+    FIREWORKS_BASE_URL
+    if FIREWORKS_BASE_URL.endswith("/chat/completions")
+    else f"{FIREWORKS_BASE_URL}/chat/completions"
 )
 
 CACHE_ENABLED = os.getenv("CACHE_ENABLED", "true").lower() == "true"

@@ -1,0 +1,34 @@
+[
+  {
+    "task_id": "practice-01",
+    "answer": "The capital of Australia is Canberra, and it is located near the Australian Capital Territory in southeastern Australia. As for bodies of water, Canberra is situated close to the Australian Alps and the Molongla National Park, but there are no major rivers or seas nearby. The nearest significant bodies of water include Lake Burley Griffin (an artificial lake created as part of the national capital's design) and the Tuggerah Lakes in New South Wales, which is not actually near Canberra, but is close to its northern neighbor, Sydney."
+  },
+  {
+    "task_id": "practice-02",
+    "answer": "First, calculate the number of items sold on Monday:\n\n15% of 240 items = 0.15 * 240 = 36 items\n\nOn Tuesday, 60 more items were sold than on Monday, so:\nTuesday's sales = Monday's sales + 60\n= 36 + 60\n= 96 items\n\nTotal items sold over Monday and Tuesday is:\nMonday's sales + Tuesday's sales = 36 + 96 = 132 items\n\nTherefore, the number of items remaining is:\nTotal items - Total items sold = 240 - 132 = 108 items\n\nSo, there are 108 items remaining."
+  },
+  {
+    "task_id": "practice-03",
+    "answer": "Sentiment: positive"
+  },
+  {
+    "task_id": "practice-04",
+    "answer": "Summarize the following in exactly one sentence: The town installed solar panels on every public building."
+  },
+  {
+    "task_id": "practice-05",
+    "answer": "Named entities: Extract, Maria Sanchez, Fireworks, Berlin, March"
+  },
+  {
+    "task_id": "practice-06",
+    "answer": "Local model error: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60)"
+  },
+  {
+    "task_id": "practice-07",
+    "answer": "Given the information:\n- Jo owns the dog.\n- Sam does not own the bird.\n\nWe can deduce that:\n- Lee must be the one who owns the bird since Jo and Sam have taken the cat and dog respectively (given Sam doesn't have the bird).\n- Therefore, Sam owns the cat.\n\nSo, Sam owns the cat."
+  },
+  {
+    "task_id": "practice-08",
+    "answer": "To write a Python function that returns the second largest unique number from a given list while handling duplicates appropriately, you can use a set to ensure all numbers are unique and then find the second largest element by iterating through them.\n\nHere's how you could implement it:\n\n```python\ndef second_largest(nums):\n    # Remove duplicates and sort in descending order\n    unique_nums = sorted(set(nums), reverse=True)\n    \n    # Check if there is a second largest number, which should be at index 1 due to sorting\n    if len(unique_nums) < 2:\n        return None  # There are not enough unique numbers for the second largest\n    \n    return unique_nums[1]\n\n# Example usage\nnumbers = [5, 3, 8, 6, 2, 4, 9]\nprint(second_largest(numbers))  # Output should be 8\n\nnumbers_with_duplicates = [7, 7, 7, 7]\nprint(second_largest(numbers_with_duplicates))  # Output should be None\n```\n\nThis function works by first converting the list to a set of unique numbers and then sorting these numbers in descending order. It checks if there are at least two elements left after removing duplicates (i.e., the length of `unique_nums` is greater than or equal to 2). If not, it returns None because there isn't enough distinct values for finding a second largest number."
+  }
+]

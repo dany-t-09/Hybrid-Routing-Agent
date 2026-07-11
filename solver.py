@@ -1,9 +1,11 @@
 from fireworks_client import ask_fireworks
+from config import ALLOWED_MODELS, FIREWORKS_API_KEY
 from local_model_client import ask_local_model
-from local.math_solver import solve_math
+from local.math_solver import can_solve_math, solve_math
 from local.ner_solver import solve_ner
 from local.sentiment_solver import solve_sentiment
 from local.summary_solver import solve_summary
+from result import AnswerResult
 
 
 LOCAL_SOLVERS = {
@@ -14,38 +16,67 @@ LOCAL_SOLVERS = {
 }
 
 
-COMPLEX_CUES = {
-    "build a full",
-    "large project",
-    "production",
-    "architecture",
-    "multi-file",
-    "research",
-    "deep analysis",
-    "advanced reasoning",
-    "optimize",
-    "complex",
+LOCAL_ACCURACY = {
+    "math": 99,
+    "ner": 70,
+    "sentiment": 75,
+    "summary": 60,
+}
+
+FIREWORKS_ACCURACY = {
+    "debugging": 85,
+    "codegen": 85,
+    "logic": 82,
+    "factual": 80,
 }
 
 
+def _is_error(answer: str) -> bool:
+    return answer.startswith((
+        "Fireworks API error (",
+        "Could not reach Fireworks API:",
+        "Unexpected Fireworks response format:",
+        "FIREWORKS_API_KEY is not set.",
+        "ALLOWED_MODELS is not set.",
+        "Local model error:",
+        "Could not solve math expression:",
+    ))
+
+
 def should_use_fireworks(query: str, task_type: str) -> bool:
-    lowered = query.lower()
+    if not FIREWORKS_API_KEY or not ALLOWED_MODELS:
+        return False
 
-    if task_type in {"debugging", "codegen", "logic"} and len(query.split()) > 80:
-        return True
-
-    if len(query.split()) > 150:
-        return True
-
-    return any(cue in lowered for cue in COMPLEX_CUES)
+    # Exact arithmetic is faster and more reliable locally. All other task
+    # categories benefit from the permitted remote model's broader reasoning.
+    return task_type != "math" or not can_solve_math(query)
 
 
-def solve(query: str, task_type: str) -> str:
+def solve(query: str, task_type: str) -> AnswerResult:
     if should_use_fireworks(query, task_type):
-        return ask_fireworks(query, task_type)
+        response = ask_fireworks(query, task_type)
+        if not _is_error(response.answer):
+            return AnswerResult(
+                answer=response.answer,
+                source="Fireworks AI",
+                estimated_accuracy=FIREWORKS_ACCURACY.get(task_type, 80),
+                prompt_tokens=response.prompt_tokens,
+                completion_tokens=response.completion_tokens,
+                total_tokens=response.total_tokens,
+            )
 
     local_solver = LOCAL_SOLVERS.get(task_type)
     if local_solver:
-        return local_solver(query)
+        answer = local_solver(query)
+        return AnswerResult(
+            answer=answer,
+            source="Local model",
+            estimated_accuracy=None if _is_error(answer) else LOCAL_ACCURACY[task_type],
+        )
 
-    return ask_local_model(query, task_type)
+    answer = ask_local_model(query, task_type)
+    return AnswerResult(
+        answer=answer,
+        source="Local model",
+        estimated_accuracy=None if _is_error(answer) else 65,
+    )
