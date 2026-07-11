@@ -1,3 +1,4 @@
+import sys
 from fireworks_client import ask_fireworks
 from config import ALLOWED_MODELS, FIREWORKS_API_KEY
 from local_model_client import ask_local_model
@@ -64,6 +65,11 @@ def solve(query: str, task_type: str) -> AnswerResult:
                 completion_tokens=response.completion_tokens,
                 total_tokens=response.total_tokens,
             )
+        print(
+            f"Fireworks failed for {task_type}; falling back to local. Reason: {response.answer}",
+            file=sys.stderr,
+            flush=True,
+        )
 
     local_solver = LOCAL_SOLVERS.get(task_type)
     if local_solver:

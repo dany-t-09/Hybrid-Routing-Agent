@@ -1,4 +1,4 @@
-import argparse
+﻿import argparse
 import ctypes
 import os
 import sys
@@ -181,16 +181,18 @@ def run_interactive() -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run the general agent interactively or on a JSON task batch.")
     parser.add_argument("--batch", action="store_true", help="Read tasks JSON and write results JSON, then exit.")
+    parser.add_argument("--interactive", action="store_true", help="Force interactive mode instead of batch mode.")
     parser.add_argument("--input", type=Path, default=None, help="Path to tasks.json (used with --batch).")
     parser.add_argument("--output", type=Path, default=None, help="Path to results.json (used with --batch).")
     args = parser.parse_args()
 
-    if not args.batch:
-        run_interactive()
-        return
-
     input_path = args.input or Path(os.getenv("TASKS_INPUT_PATH", str(default_input_path())))
     output_path = args.output or Path(os.getenv("TASKS_OUTPUT_PATH", str(default_output_path())))
+    should_run_batch = args.batch or (not args.interactive and input_path.exists())
+
+    if not should_run_batch:
+        run_interactive()
+        return
     try:
         results = process_tasks(input_path, output_path)
     except ValueError as exc:
@@ -200,3 +202,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

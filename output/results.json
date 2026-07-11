@@ -1,34 +1,42 @@
 [
   {
-    "task_id": "practice-01",
-    "answer": "The capital of Australia is Canberra, and it is located near the Australian Capital Territory in southeastern Australia. As for bodies of water, Canberra is situated close to the Australian Alps and the Molongla National Park, but there are no major rivers or seas nearby. The nearest significant bodies of water include Lake Burley Griffin (an artificial lake created as part of the national capital's design) and the Tuggerah Lakes in New South Wales, which is not actually near Canberra, but is close to its northern neighbor, Sydney."
+    "task_id": "math-01",
+    "answer": "To find out how many boxes remain, we need to first determine how many boxes were taken during the morning.\n\nThe warehouse initially had 540 boxes. In the morning, it took 18% of them:\n\n\\[ \\text{Morning removal} = 18\\% \\times 540 = 0.18 \\times 540 = 97.2 \\]\n\nSince we can't have a fraction of a box being taken out in this context, let's assume the problem implies taking whole boxes, and thus round it to 97.\n\nAfter removing 97 boxes in the morning, the remaining number of boxes would be:\n\n\\[ 540 - 97 = 443 \\]\n\nThen, another 96 boxes were taken out in the afternoon. So, subtracting these from the remaining boxes:\n\n\\[ 443 - 96 = 347 \\]\n\nThus, there are 347 boxes left.\n\nTherefore, the number of boxes that remain is 347."
   },
   {
-    "task_id": "practice-02",
-    "answer": "First, calculate the number of items sold on Monday:\n\n15% of 240 items = 0.15 * 240 = 36 items\n\nOn Tuesday, 60 more items were sold than on Monday, so:\nTuesday's sales = Monday's sales + 60\n= 36 + 60\n= 96 items\n\nTotal items sold over Monday and Tuesday is:\nMonday's sales + Tuesday's sales = 36 + 96 = 132 items\n\nTherefore, the number of items remaining is:\nTotal items - Total items sold = 240 - 132 = 108 items\n\nSo, there are 108 items remaining."
+    "task_id": "math-02",
+    "answer": "To calculate the total distance traveled, we use the formula: Distance = Speed × Time.\n\nFor the first part of the journey:\nSpeed = 72 km/h\nTime = 2.5 hours\n\nDistance1 = 72 km/h × 2.5 h = 180 km\n\nFor the second part of the journey:\nSpeed = 90 km/h\nTime = 1.5 hours\n\nDistance2 = 90 km/h × 1.5 h = 135 km\n\nTotal distance traveled = Distance1 + Distance2 = 180 km + 135 km = 315 km\n\nTherefore, the total distance traveled is 315 kilometers."
   },
   {
-    "task_id": "practice-03",
-    "answer": "Sentiment: positive"
+    "task_id": "math-03",
+    "answer": "To determine the number of boys and girls in a class with a total of 36 students where the ratio of boys to girls is 5:4, you can solve this problem step-by-step.\n\nGiven:\n- Total number of students = 36\n- Ratio of boys to girls = 5:4\n\nThis means that for every 9 parts (since 5 + 4 = 9), there are a total of 36 students. To find out how many complete sets of these 9 parts fit into the total, divide the total number of students by 9:\n\\[ \\text{Number of parts} = \\frac{36}{9} = 4 \\]\n\nNow, multiply this number of parts by the respective ratio numbers to get the exact number of boys and girls.\n\n- Number of boys: \\(5 \\times 4 = 20\\)\n- Number of girls: \\(4 \\times 4 = 16\\)\n\nSo there are 20 boys and 16 girls in the class."
   },
   {
-    "task_id": "practice-04",
-    "answer": "Summarize the following in exactly one sentence: The town installed solar panels on every public building."
+    "task_id": "math-04",
+    "answer": "To find the final price after applying the discounts and adding sales tax, we need to follow these steps:\n\n1. Calculate the discount amount: \\(1200 \\times \\frac{25}{100} = 300\\)\n   - The laptop price after a 25% discount is \\(1200 - 300 = 900\\).\n\n2. Apply an 8% sales tax on the discounted price: \n   - Sales tax amount is \\(900 \\times \\frac{8}{100} = 72\\).\n   - The final price after applying the sales tax would be \\(900 + 72 = 972\\).\n\nTherefore, the final price of the laptop is $972."
   },
   {
-    "task_id": "practice-05",
-    "answer": "Named entities: Extract, Maria Sanchez, Fireworks, Berlin, March"
+    "task_id": "math-05",
+    "answer": "Named entities: Every, How, Round"
   },
   {
-    "task_id": "practice-06",
-    "answer": "Local model error: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60)"
+    "task_id": "math-06",
+    "answer": "To find out how many phones were finally approved for sale, we need to calculate the number of initially failing phones and then determine those that could be repaired.\n\n1. Calculate the initial number of failing phones:\n   7.5% of 2400 = (7.5 / 100) * 2400 = 180 phones\n\n2. Half of these failed phones were successfully repaired, which means:\n   Half of 180 = 90 phones were fixed.\n\nTherefore, the number of approved phones for sale is calculated as:\nTotal manufactured - Failed + Fixed = 2400 - 180 + 90 = 2310\n\nSo, finally, 2310 phones were approved for sale."
   },
   {
-    "task_id": "practice-07",
-    "answer": "Given the information:\n- Jo owns the dog.\n- Sam does not own the bird.\n\nWe can deduce that:\n- Lee must be the one who owns the bird since Jo and Sam have taken the cat and dog respectively (given Sam doesn't have the bird).\n- Therefore, Sam owns the cat.\n\nSo, Sam owns the cat."
+    "task_id": "math-07",
+    "answer": "To calculate the total amount at the end of the investment period, we first need to determine the interest earned over the 4 years and then add it to the principal.\n\nThe formula for simple interest is:\n\\[ I = P \\times r \\times t \\]\nwhere \\( I \\) is the interest, \\( P \\) is the principal amount ($15,000 in this case), \\( r \\) is the annual interest rate (6.5% or 0.065 as a decimal), and \\( t \\) is time in years (4 years).\n\nSo,\n\\[ I = 15000 \\times 0.065 \\times 4 = 3900 \\]\n\nThe total amount after 4 years will be the principal plus the interest:\n\\[ A = P + I = 15000 + 3900 = 18900 \\]\n\nTherefore, at the end of the investment period, John's total amount is $18,900."
   },
   {
-    "task_id": "practice-08",
-    "answer": "To write a Python function that returns the second largest unique number from a given list while handling duplicates appropriately, you can use a set to ensure all numbers are unique and then find the second largest element by iterating through them.\n\nHere's how you could implement it:\n\n```python\ndef second_largest(nums):\n    # Remove duplicates and sort in descending order\n    unique_nums = sorted(set(nums), reverse=True)\n    \n    # Check if there is a second largest number, which should be at index 1 due to sorting\n    if len(unique_nums) < 2:\n        return None  # There are not enough unique numbers for the second largest\n    \n    return unique_nums[1]\n\n# Example usage\nnumbers = [5, 3, 8, 6, 2, 4, 9]\nprint(second_largest(numbers))  # Output should be 8\n\nnumbers_with_duplicates = [7, 7, 7, 7]\nprint(second_largest(numbers_with_duplicates))  # Output should be None\n```\n\nThis function works by first converting the list to a set of unique numbers and then sorting these numbers in descending order. It checks if there are at least two elements left after removing duplicates (i.e., the length of `unique_nums` is greater than or equal to 2). If not, it returns None because there isn't enough distinct values for finding a second largest number."
+    "task_id": "math-08",
+    "answer": "To find out how many packages remain after the delivery truck has unloaded at all five warehouses, we need to calculate the number of packages unloaded from each warehouse and then subtract these totals from the initial amount.\n\n1. At the first warehouse, 20% of 2500 packages are unloaded:\n   \\[ 0.20 \\times 2500 = 500 \\]\n   \n2. At the second warehouse, 15% of 2500 packages are unloaded:\n   \\[ 0.15 \\times 2500 = 375 \\]\n   \n3. At the third warehouse, 25% of 2500 packages are unloaded:\n   \\[ 0.25 \\times 2500 = 625 \\]\n   \n4. At the fourth warehouse, 10% of 2500 packages are unloaded:\n   \\[ 0.10 \\times 2500 = 250 \\]\n   \n5. At the fifth warehouse, 30% of 2500 packages are unloaded:\n   \\[ 0.30 \\times 2500 = 750 \\]\n\nNow we calculate the total number of packages unloaded at all five warehouses:\n\\[ 500 + 375 + 625 + 250 + 750 = 2400 \\]\n   \nThen, subtract this from the initial amount (2500) to find out how many remain after the fifth warehouse:\n\\[ 2500 - 2400 = 100 \\]\n\nTherefore, 100 packages remain after the delivery truck has unloaded at all five warehouses."
+  },
+  {
+    "task_id": "math-09",
+    "answer": "To find the total area occupied by the field and the path, we first need to determine the dimensions that include both the field and the path.\n\nThe length including the path becomes 120 meters + (3 meters * 2 sides) = 120 meters + 6 meters = 126 meters.\nSimilarly, the width including the path is 85 meters + (3 meters * 2 sides) = 85 meters + 6 meters = 91 meters.\n\nThe total area occupied by the field and the path is then calculated as:\nTotal Area = Length * Width = 126 meters * 91 meters = 11466 square meters."
+  },
+  {
+    "task_id": "math-10",
+    "answer": "First, calculate the total number of parts produced by each machine:\n\n- Machine A: 120 parts/hour * 8 hours = 960 parts.\n- Machine B: 150 parts/hour * 6.5 hours = 975 parts.\n- Machine C: 180 parts/hour * 7.25 hours = 1320 parts.\n\nSumming up the total number of parts produced:\nTotal parts = 960 + 975 + 1320 = 3255 parts.\n\nGiven that 4% are rejected, calculate the number of acceptable parts:\n\n- Number of unacceptable parts: 3255 * (4/100) = 130.2 parts.\n- Therefore, number of acceptable parts remaining is 3255 - 130.2 ≈ 3124.8.\n\nSince the number of parts must be an integer, we round down to get a precise count: 3124 acceptable parts remain."
   }
 ]

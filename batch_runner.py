@@ -1,6 +1,7 @@
 """Batch input/output handling for the future container entry point."""
 
 import json
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -23,11 +24,17 @@ def default_output_path() -> Path:
 
 def load_tasks(input_path: Path) -> list[dict[str, str]]:
     try:
-        data: Any = json.loads(input_path.read_text(encoding="utf-8"))
+        raw_tasks = input_path.read_text(encoding="utf-8-sig")
     except FileNotFoundError as exc:
         raise ValueError(f"Tasks file was not found: {input_path}") from exc
+
+    if not raw_tasks.strip():
+        raise ValueError(f"Tasks file is empty: {input_path}")
+
+    try:
+        data: Any = json.loads(raw_tasks)
     except json.JSONDecodeError as exc:
-        raise ValueError(f"Tasks file is not valid JSON: {exc}") from exc
+        raise ValueError(f"Tasks file is not valid JSON at {input_path}: {exc}") from exc
 
     if not isinstance(data, list):
         raise ValueError("Tasks JSON must be a list of task objects.")
@@ -50,8 +57,21 @@ def write_results(output_path: Path, results: list[dict[str, str]]) -> None:
 def process_tasks(input_path: Path, output_path: Path) -> list[dict[str, str]]:
     """Answer every task and save the required submission JSON shape."""
     results = []
-    for task in load_tasks(input_path):
-        result = solve(task["prompt"], classify_task(task["prompt"]))
+    tasks = load_tasks(input_path)
+    for index, task in enumerate(tasks, start=1):
+        task_type = classify_task(task["prompt"])
+        print(
+            f"[{index}/{len(tasks)}] {task['task_id']} classified as {task_type}; routing...",
+            file=sys.stderr,
+            flush=True,
+        )
+        result = solve(task["prompt"], task_type)
+        print(
+            f"[{index}/{len(tasks)}] {task['task_id']} answered by {result.source}",
+            file=sys.stderr,
+            flush=True,
+        )
         results.append({"task_id": task["task_id"], "answer": result.answer})
     write_results(output_path, results)
     return results
+

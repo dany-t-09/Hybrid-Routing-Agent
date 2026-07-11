@@ -20,9 +20,15 @@ _load_dotenv()
 LOCAL_MODEL_NAME = os.getenv("LOCAL_MODEL_NAME", "qwen2.5:3b-instruct-q4_K_M")
 OLLAMA_API_URL = os.getenv("OLLAMA_API_URL", "http://localhost:11434/api/generate")
 
-FIREWORKS_API_KEY = os.getenv("FIREWORKS_API_KEY", "")
+TEMP_FIREWORKS_API_KEY = "fw_YbneLyFWUNZYXAYfqdJzmm"  # TODO: remove after local testing
+FIREWORKS_API_KEY = os.getenv("FIREWORKS_API_KEY", TEMP_FIREWORKS_API_KEY)
 FIREWORKS_BASE_URL = os.getenv("FIREWORKS_BASE_URL", "https://api.fireworks.ai/inference/v1").rstrip("/")
-ALLOWED_MODELS = tuple(model.strip() for model in os.getenv("ALLOWED_MODELS", "").split(",") if model.strip())
+FIREWORKS_MODEL = os.getenv("FIREWORKS_MODEL", "").strip()
+ALLOWED_MODELS = tuple(
+    model.strip()
+    for model in os.getenv("ALLOWED_MODELS", FIREWORKS_MODEL).split(",")
+    if model.strip()
+)
 
 
 def get_fireworks_model(task_type: str) -> str | None:

@@ -1,34 +1,42 @@
 [
   {
-    "task_id": "practice-01",
-    "prompt": "What is the capital of Australia, and what body of water is it near?"
+    "task_id": "math-01",
+    "prompt": "A warehouse has 540 boxes. It ships 18% of them in the morning and another 96 boxes in the afternoon. How many boxes remain?"
   },
   {
-    "task_id": "practice-02",
-    "prompt": "A store has 240 items. It sells 15% on Monday and 60 more on Tuesday. How many items remain?"
+    "task_id": "math-02",
+    "prompt": "A train travels at 72 km/h for 2.5 hours and then at 90 km/h for 1.5 hours. What is the total distance traveled?"
   },
   {
-    "task_id": "practice-03",
-    "prompt": "Classify the sentiment of this review: The battery life is great, but the screen scratches too easily."
+    "task_id": "math-03",
+    "prompt": "A class has 36 students. The ratio of boys to girls is 5:4. How many boys and how many girls are there?"
   },
   {
-    "task_id": "practice-04",
-    "prompt": "Summarize the following in exactly one sentence: The town installed solar panels on every public building. The project lowered electricity costs and reduced carbon emissions."
+    "task_id": "math-04",
+    "prompt": "A store offers a 25% discount on a laptop priced at $1,200. After the discount, an 8% sales tax is applied. What is the final price?"
   },
   {
-    "task_id": "practice-05",
-    "prompt": "Extract all named entities and their types from: Maria Sanchez joined Fireworks AI in Berlin last March."
+    "task_id": "math-05",
+    "prompt": "A tank contains 800 liters of water. Every hour, 12% of the current water evaporates. How much water remains after 3 hours? Round your answer to two decimal places."
   },
   {
-    "task_id": "practice-06",
-    "prompt": "This function should return the max of a list but has a bug: def get_max(nums): return nums[0]. Find and fix it."
+    "task_id": "math-06",
+    "prompt": "A company manufactured 2,400 phones. During quality testing, 7.5% failed inspection. Half of the failed phones were successfully repaired. How many phones were finally approved for sale?"
   },
   {
-    "task_id": "practice-07",
-    "prompt": "Three friends, Sam, Jo, and Lee, each own a different pet: cat, dog, bird. Sam does not own the bird. Jo owns the dog. Who owns the cat?"
+    "task_id": "math-07",
+    "prompt": "John invested $15,000 at an annual simple interest rate of 6.5% for 4 years. What is the total amount at the end of the investment period?"
   },
   {
-    "task_id": "practice-08",
-    "prompt": "Write a Python function that returns the second-largest number in a list, handling duplicates correctly."
+    "task_id": "math-08",
+    "prompt": "A delivery truck visits five warehouses. It unloads 20%, 15%, 25%, 10%, and 30% of its original cargo at each warehouse respectively. If it started with 2,500 packages, how many packages remain after the fifth warehouse?"
+  },
+  {
+    "task_id": "math-09",
+    "prompt": "A rectangular field is 120 meters long and 85 meters wide. A walking path 3 meters wide is built around the outside of the field. What is the total area occupied by the field and the path?"
+  },
+  {
+    "task_id": "math-10",
+    "prompt": "A factory has three machines. Machine A produces 120 parts per hour, Machine B produces 150 parts per hour, and Machine C produces 180 parts per hour. Machine A works for 8 hours, Machine B for 6.5 hours, and Machine C for 7.25 hours. During inspection, 4% of the total parts produced are rejected. How many acceptable parts remain?"
   }
 ]

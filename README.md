@@ -1,4 +1,4 @@
-# General Agent
+﻿# General Agent
 
 A small Python project scaffold for routing tasks to local solvers or a Fireworks AI model.
 
@@ -22,7 +22,13 @@ Then put your Fireworks key in `.env`.
 python main.py
 ```
 
-The program stays open for more queries. Press Enter to submit a query and type
+When `input/tasks.json` exists, the agent reads all tasks, writes `output/results.json`, and exits. Use interactive mode for manual testing:
+
+```bash
+python main.py --interactive
+```
+
+In interactive mode, the program stays open for more queries. Press Enter to submit a query and type
 `/exit` to close it. On Windows, a multiline clipboard paste is recovered as a
 single query when its first line reaches Enter, and the remaining pasted input
 is cleared so it cannot create extra queries.
@@ -33,7 +39,7 @@ by the Fireworks API (or reports that usage was unavailable).
 
 ## JSON batch mode
 
-Run the future container-style input/output flow locally without Docker:
+You can also force the container-style input/output flow locally without Docker:
 
 ```bash
 python main.py --batch
@@ -50,3 +56,4 @@ models listed in `ALLOWED_MODELS` and routes Fireworks requests through the
 provided base URL. Once those values are supplied, Fireworks handles every
 non-deterministic language task for accuracy; only exact arithmetic expressions
 remain local because they are faster and deterministic.
+
