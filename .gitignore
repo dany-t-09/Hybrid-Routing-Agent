@@ -4,3 +4,6 @@ venv/
 __pycache__/
 *.py[cod]
 output/cache.json
+# Keep the local GGUF model out of source control; Docker still includes it
+# because it is intentionally not listed in .dockerignore.
+models/*.gguf
