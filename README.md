@@ -11,6 +11,21 @@ pip install -r requirements.txt
 copy .env.example .env
 ```
 
+## Deploy the demo on Vercel
+
+This repository includes a lightweight, static product demo in
+`docs/index.html`. It is configured for Vercel through `vercel.json`, so it
+does not try to install or run the optional local GGUF model.
+
+1. Push the repository to GitHub and import it in [Vercel](https://vercel.com/new).
+2. Leave the build command empty; Vercel will publish the configured `docs`
+   output directory.
+3. Click **Deploy**. No environment variables are required for the demo.
+
+The deployed page illustrates task classification and routing. The production
+agent itself remains available through the Docker workflow below, where it can
+use the required model and credentials safely.
+
 Put development-only Fireworks values in `.env`. Never include `.env` or a
 credential in a submitted image; Docker excludes it through `.dockerignore`.
 
