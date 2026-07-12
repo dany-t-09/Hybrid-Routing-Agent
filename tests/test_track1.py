@@ -16,6 +16,7 @@ except ModuleNotFoundError:
 
 from batch_runner import process_tasks
 from classifier import classify_task
+from local_model_client import LocalModelResponse
 from result import AnswerResult
 from solver import solve
 
@@ -64,10 +65,24 @@ class TrackOneTests(unittest.TestCase):
 
     def test_math_word_problem_uses_llm_not_expression_parser(self):
         prompt = "A shop has 20 apples and sells 25% of them. How many remain?"
-        with patch("solver.FIREWORKS_API_KEY", ""), patch("solver.ask_local_model", return_value="15 apples remain."):
+        with patch("solver.FIREWORKS_API_KEY", ""), patch(
+            "solver.ask_local_model", return_value=LocalModelResponse("15 apples remain.", 90)
+        ):
             result = solve(prompt, "math")
         self.assertEqual(result.answer, "15 apples remain.")
         self.assertEqual(result.source, "Local model")
+
+    def test_low_local_confidence_escalates_to_fireworks(self):
+        local = LocalModelResponse("Uncertain local answer", 59)
+        remote = types.SimpleNamespace(
+            answer="Verified Fireworks answer", prompt_tokens=3, completion_tokens=4, total_tokens=7
+        )
+        with patch("solver.FIREWORKS_API_KEY", "key"), patch("solver.ALLOWED_MODELS", ("allowed",)), patch(
+            "solver.ask_local_model", return_value=local
+        ), patch("solver.ask_fireworks", return_value=remote):
+            result = solve("Explain a difficult topic", "factual")
+        self.assertEqual(result.answer, "Verified Fireworks answer")
+        self.assertEqual(result.source, "Fireworks AI")
 
 
 if __name__ == "__main__":
