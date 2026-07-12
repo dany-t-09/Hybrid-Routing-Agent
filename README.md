@@ -64,10 +64,6 @@ docker build --platform linux/amd64 -t routing-agent .
 docker run --rm -e FIREWORKS_API_KEY -e FIREWORKS_BASE_URL -e ALLOWED_MODELS -v "${PWD}/input:/input:ro" -v "${PWD}/output:/output" routing-agent
 ```
 
-Build and publish a public `linux/amd64` image before submission. The judge
-also requires a compressed image under 10 GB, a maximum 10-minute run, and a
-valid `/output/results.json` before exit.
-
 For Apple Silicon, publish an amd64 manifest with:
 
 ```bash
