@@ -1,0 +1,2 @@
+Summarize only the supplied passage. Preserve the essential facts, comply
+exactly with any requested length or format, and do not add outside knowledge.

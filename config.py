@@ -16,13 +16,19 @@ def _load_dotenv() -> None:
 
 
 _load_dotenv()
-#  LOCAL MODEL 
+# A GGUF model may be bundled at this path for offline inference.  Do not add a
+# model ID to this project: only a local file is used by llama.cpp.
+LOCAL_MODEL_PATH = os.getenv("LOCAL_MODEL_PATH", "/app/models/model.gguf")
+LOCAL_MODEL_CONTEXT = int(os.getenv("LOCAL_MODEL_CONTEXT", "2048"))
+LOCAL_MODEL_THREADS = int(os.getenv("LOCAL_MODEL_THREADS", "2"))
+# Ollama remains useful during development, but is not required by the image.
 LOCAL_MODEL_NAME = os.getenv("LOCAL_MODEL_NAME", "qwen2.5:3b-instruct-q4_K_M")
 OLLAMA_API_URL = os.getenv("OLLAMA_API_URL", "http://localhost:11434/api/generate")
 
-TEMP_FIREWORKS_API_KEY = "fw_YbneLyFWUNZYXAYfqdJzmm"  # TODO: remove after local testing
-FIREWORKS_API_KEY = os.getenv("FIREWORKS_API_KEY", TEMP_FIREWORKS_API_KEY)
-FIREWORKS_BASE_URL = os.getenv("FIREWORKS_BASE_URL", "https://api.fireworks.ai/inference/v1").rstrip("/")
+# Never supply a fallback credential or model here. The hackathon harness
+# injects these settings at runtime, and calls must use its proxy URL.
+FIREWORKS_API_KEY = os.getenv("FIREWORKS_API_KEY", "").strip()
+FIREWORKS_BASE_URL = os.getenv("FIREWORKS_BASE_URL", "").rstrip("/")
 FIREWORKS_MODEL = os.getenv("FIREWORKS_MODEL", "").strip()
 ALLOWED_MODELS = tuple(
     model.strip()
@@ -40,7 +46,7 @@ def get_fireworks_model(task_type: str) -> str | None:
     return requested_model if requested_model in ALLOWED_MODELS else ALLOWED_MODELS[0]
 
 
-FIREWORKS_API_URL = (
+FIREWORKS_API_URL = "" if not FIREWORKS_BASE_URL else (
     FIREWORKS_BASE_URL
     if FIREWORKS_BASE_URL.endswith("/chat/completions")
     else f"{FIREWORKS_BASE_URL}/chat/completions"

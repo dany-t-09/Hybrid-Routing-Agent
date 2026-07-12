@@ -19,6 +19,8 @@ def load_prompt(task_type: str) -> str:
 def ask_fireworks(query: str, task_type: str = "factual") -> FireworksResponse:
     if not FIREWORKS_API_KEY:
         return FireworksResponse("FIREWORKS_API_KEY is not set. Add it to .env or your environment and try again.")
+    if not FIREWORKS_API_URL:
+        return FireworksResponse("FIREWORKS_BASE_URL is not set. The submission must use the harness proxy URL.")
 
     model = get_fireworks_model(task_type)
     if model is None:

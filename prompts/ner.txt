@@ -1,0 +1,3 @@
+Extract every named entity from the supplied text and label each with an
+appropriate type such as PERSON, ORGANIZATION, LOCATION, or DATE. Return a
+clear, compact list and do not label ordinary capitalized words as entities.

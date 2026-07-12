@@ -1,42 +1,42 @@
 [
   {
-    "task_id": "math-01",
-    "prompt": "A warehouse has 540 boxes. It ships 18% of them in the morning and another 96 boxes in the afternoon. How many boxes remain?"
+    "task_id": "coding-01",
+    "prompt": "Given an array of up to 1,000,000 integers and an integer k, write an efficient Python program to find the length of the longest contiguous subarray whose sum is exactly k. Your solution should run in O(n) time, include the complete Python implementation, explain the algorithm, and analyze its time and space complexity."
   },
   {
-    "task_id": "math-02",
-    "prompt": "A train travels at 72 km/h for 2.5 hours and then at 90 km/h for 1.5 hours. What is the total distance traveled?"
+    "task_id": "coding-02",
+    "prompt": "Implement an LRU (Least Recently Used) cache in Python supporting get(key) and put(key, value) operations in O(1) time. Do not use functools.lru_cache. Provide the complete implementation, explain your design using a hash map and doubly linked list, and analyze the complexity."
   },
   {
-    "task_id": "math-03",
-    "prompt": "A class has 36 students. The ratio of boys to girls is 5:4. How many boys and how many girls are there?"
+    "task_id": "coding-03",
+    "prompt": "Given a directed weighted graph with up to 100,000 vertices and 300,000 edges, where edge weights may be negative but no negative cycles exist, implement an algorithm to compute the shortest path from a source node to every other node. If a negative cycle is detected, return 'NEGATIVE CYCLE'. Include complete Python code and complexity analysis."
   },
   {
-    "task_id": "math-04",
-    "prompt": "A store offers a 25% discount on a laptop priced at $1,200. After the discount, an 8% sales tax is applied. What is the final price?"
+    "task_id": "coding-04",
+    "prompt": "Design a thread-safe in-memory key-value store in Python supporting put, get, delete, TTL expiration, and automatic cleanup of expired keys. Use Python threading primitives where appropriate. Provide complete code, explain your synchronization strategy, and analyze complexity."
   },
   {
-    "task_id": "math-05",
-    "prompt": "A tank contains 800 liters of water. Every hour, 12% of the current water evaporates. How much water remains after 3 hours? Round your answer to two decimal places."
+    "task_id": "coding-05",
+    "prompt": "Implement a Trie (Prefix Tree) in Python supporting insert(word), search(word), startsWith(prefix), and delete(word). Include complete code, explain the delete operation carefully, and analyze time and space complexity."
   },
   {
-    "task_id": "math-06",
-    "prompt": "A company manufactured 2,400 phones. During quality testing, 7.5% failed inspection. Half of the failed phones were successfully repaired. How many phones were finally approved for sale?"
+    "task_id": "coding-06",
+    "prompt": "Given a binary tree, implement a Python function that returns the Lowest Common Ancestor (LCA) of two nodes without storing parent pointers. Include complete code, explain the recursive approach, and analyze the algorithm's complexity."
   },
   {
-    "task_id": "math-07",
-    "prompt": "John invested $15,000 at an annual simple interest rate of 6.5% for 4 years. What is the total amount at the end of the investment period?"
+    "task_id": "coding-07",
+    "prompt": "Implement a Python program that solves the N-Queens problem for any integer N ≥ 4 using backtracking. Return all valid board configurations, explain the pruning strategy, and analyze the worst-case time complexity."
   },
   {
-    "task_id": "math-08",
-    "prompt": "A delivery truck visits five warehouses. It unloads 20%, 15%, 25%, 10%, and 30% of its original cargo at each warehouse respectively. If it started with 2,500 packages, how many packages remain after the fifth warehouse?"
+    "task_id": "coding-08",
+    "prompt": "Given an unsorted list of intervals, merge all overlapping intervals and return the merged result. Implement the solution in Python, explain why sorting is required, and analyze the time and space complexity."
   },
   {
-    "task_id": "math-09",
-    "prompt": "A rectangular field is 120 meters long and 85 meters wide. A walking path 3 meters wide is built around the outside of the field. What is the total area occupied by the field and the path?"
+    "task_id": "coding-09",
+    "prompt": "Implement a Python class for a weighted directed graph supporting edge insertion, deletion, BFS, DFS, Dijkstra's shortest path, and topological sort when applicable. Include complete code and explain the complexity of each operation."
   },
   {
-    "task_id": "math-10",
-    "prompt": "A factory has three machines. Machine A produces 120 parts per hour, Machine B produces 150 parts per hour, and Machine C produces 180 parts per hour. Machine A works for 8 hours, Machine B for 6.5 hours, and Machine C for 7.25 hours. During inspection, 4% of the total parts produced are rejected. How many acceptable parts remain?"
+    "task_id": "coding-10",
+    "prompt": "Design and implement an in-memory distributed key-value store in Python that supports consistent hashing, configurable replication, optimistic concurrency control using version numbers, TTL expiration, snapshot persistence, and recovery. The implementation should be modular, thread-safe, and extensible. Include complete Python code, unit tests, architecture explanation, and detailed complexity analysis."
   }
 ]

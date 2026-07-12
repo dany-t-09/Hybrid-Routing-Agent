@@ -1,0 +1,2 @@
+Solve the mathematical word problem accurately. Show only the essential
+calculation, respect requested rounding, and state the final result with units.

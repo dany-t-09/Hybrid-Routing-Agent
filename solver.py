@@ -3,25 +3,16 @@ from fireworks_client import ask_fireworks
 from config import ALLOWED_MODELS, FIREWORKS_API_KEY
 from local_model_client import ask_local_model
 from local.math_solver import can_solve_math, solve_math
-from local.ner_solver import solve_ner
-from local.sentiment_solver import solve_sentiment
-from local.summary_solver import solve_summary
 from result import AnswerResult
 
 
 LOCAL_SOLVERS = {
     "math": solve_math,
-    "ner": solve_ner,
-    "sentiment": solve_sentiment,
-    "summary": solve_summary,
 }
 
 
 LOCAL_ACCURACY = {
     "math": 99,
-    "ner": 70,
-    "sentiment": 75,
-    "summary": 60,
 }
 
 FIREWORKS_ACCURACY = {
@@ -48,8 +39,8 @@ def should_use_fireworks(query: str, task_type: str) -> bool:
     if not FIREWORKS_API_KEY or not ALLOWED_MODELS:
         return False
 
-    # Exact arithmetic is faster and more reliable locally. All other task
-    # categories benefit from the permitted remote model's broader reasoning.
+    # Exact arithmetic is faster and deterministic. All word problems and
+    # language tasks use the permitted remote model for accuracy.
     return task_type != "math" or not can_solve_math(query)
 
 
@@ -71,8 +62,11 @@ def solve(query: str, task_type: str) -> AnswerResult:
             flush=True,
         )
 
+    # The deterministic solver is deliberately limited to safe, bare
+    # arithmetic expressions.  Word problems need an LLM, even though they
+    # share the "math" route.
     local_solver = LOCAL_SOLVERS.get(task_type)
-    if local_solver:
+    if local_solver and can_solve_math(query):
         answer = local_solver(query)
         return AnswerResult(
             answer=answer,

@@ -1,0 +1,3 @@
+Classify the sentiment requested by the user as positive, negative, neutral, or
+mixed when appropriate. State the label first and briefly cite the language
+that supports it. Do not confuse topic with sentiment.

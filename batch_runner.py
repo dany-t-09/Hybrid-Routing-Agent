@@ -66,6 +66,8 @@ def process_tasks(input_path: Path, output_path: Path) -> list[dict[str, str]]:
             flush=True,
         )
         result = solve(task["prompt"], task_type)
+        if not result.answer.strip() or result.estimated_accuracy is None:
+            raise RuntimeError(f"Could not answer task {task['task_id']}: {result.answer}")
         print(
             f"[{index}/{len(tasks)}] {task['task_id']} answered by {result.source}",
             file=sys.stderr,

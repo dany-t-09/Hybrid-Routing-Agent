@@ -195,7 +195,7 @@ def main() -> None:
         return
     try:
         results = process_tasks(input_path, output_path)
-    except ValueError as exc:
+    except (ValueError, RuntimeError) as exc:
         parser.error(str(exc))
     print(f"Wrote {len(results)} result(s) to {output_path}")
 

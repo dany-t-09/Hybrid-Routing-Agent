@@ -1,1 +1,5 @@
 requests>=2.32.0
+# CPU-only GGUF inference for the optional model bundled in ./models.
+# The model itself is intentionally not a Python dependency and must be added
+# by the image builder (see README.md).
+llama-cpp-python>=0.3.0,<0.4.0
