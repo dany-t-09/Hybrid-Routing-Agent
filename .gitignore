@@ -1,9 +1,22 @@
 .env
+.env.*
+!.env.example
 venv/
 .venv/
 __pycache__/
 *.py[cod]
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+build/
+dist/
 output/cache.json
+output/results.json
+*.tmp
+# Local model weights stay in the Docker build context but never in Git.
+models/*.gguf
+models/*.bin
+models/*.safetensors
 # Keep the local GGUF model out of source control; Docker still includes it
 # because it is intentionally not listed in .dockerignore.
-models/*.gguf
